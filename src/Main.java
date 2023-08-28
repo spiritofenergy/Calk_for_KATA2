@@ -8,19 +8,22 @@ public class Main {
         System.out.println("Введите два  числа.");
         String expression = scanner.nextLine();
         System.out.println(parse(expression));
+
     }
 
     public static String parse(String expression) throws Exception {
 
-        int num1 = 2;
-        int num2 = 3;
+        int num1 = 0;
+        int num2 = 0;
         String oper;
         String result;
         boolean isRoman;
         String[] operands = expression.split("[+\\-*/]");
         if (operands.length != 2) throw new Exception("Должно быть два операнда.");
+
         oper = detectOperation(expression);
         if (oper == null) throw new Exception("Эта операция не поддерживается.");
+
         if (Roman.isRoman(operands[0]) && Roman.isRoman(operands[1])) {
             //конертируем оба числа в арабские для вычисления
             num1 = Roman.convertToArabian(operands[0]);
